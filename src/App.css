@@ -36,3 +36,95 @@
     transform: rotate(360deg);
   }
 }
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* background-image: url('./background-image.jpg'); Assuming a background image */
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-content {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  width: 100%;
+  max-width: 350px; /* Adjusted max-width */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logo-section {
+  margin-bottom: 30px;
+}
+
+.app-logo-placeholder {
+  width: 80px; /* Adjust size as needed */
+  height: 80px; /* Adjust size as needed */
+  background-color: #ffc107; /* Placeholder color, replace with actual logo styles */
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.app-title {
+  font-size: 2em;
+  margin-bottom: 5px;
+  font-weight: normal; /* Adjusted font-weight */
+  font-family: 'Georgia', serif; /* Example font, adjust as needed */
+}
+
+.app-subtitle {
+  font-size: 0.8em; /* Adjusted font size */
+  color: #ffc107; /* Matching subtitle color to logo placeholder */
+  font-family: 'Arial', sans-serif; /* Example font, adjust as needed */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Adjusted gap */
+}
+
+.input-group {
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px; /* Adjusted margin */
+  font-weight: bold;
+  font-size: 0.9em; /* Adjusted font size */
+}
+
+.input-group input {
+  width: calc(100% - 20px); /* Adjusted width for padding */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #555; /* Added border */
+  background-color: #333; /* Darker background */
+  color: white;
+  font-size: 1em;
+}
+
+.login-button {
+  padding: 12px; /* Adjusted padding */
+  border-radius: 5px; /* Adjusted border-radius */
+  border: none;
+  background: linear-gradient(to bottom, #61dafb, #4fa3d1); /* Gradient background */
+  color: white; /* Adjusted text color */
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Added top margin */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:hover {
+  background: linear-gradient(to bottom, #4fa3d1, #3b7b9e); /* Darker gradient on hover */
+}
