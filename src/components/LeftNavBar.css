@@ -58,6 +58,8 @@
   background-color: #555; /* Darker background on hover */
 }
 
-.nav-links li:first-child a {
-  background-color: #555; /* Highlight the Dashboard link as per UI */
+.nav-links a.active {
+  background-color: #d3d3d3; /* Light grey background for active link */
+  color: #333; /* Dark text color for active link */
+  font-weight: bold; /* Make active link text bold */
 } 

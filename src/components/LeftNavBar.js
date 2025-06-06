@@ -1,8 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './LeftNavBar.css'; // Assuming a CSS file for the LeftNavBar
 
 function LeftNavBar() {
+  const location = useLocation();
+
+  const navLinks = [
+    { to: '/dashboard', label: 'Dashboard' },
+    { to: '/payment', label: 'Payment Management' },
+    { to: '/certificates-management', label: 'Certificates Management' },
+    { to: '/nic-verification', label: 'NIC Verification' },
+    { to: '/driver-profile-management', label: 'Driver Profile Management' },
+    { to: '/mechanic-profile-management', label: 'Mechanic Profile Management' },
+    // { to: '/revenue', label: 'Revenue' },
+  ];
+
   return (
     <div className="left-nav-bar">
       <div className="app-info">
@@ -13,13 +25,16 @@ function LeftNavBar() {
       </div>
       <nav className="nav-links">
         <ul>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/payment">Payment Management</Link></li>
-          <li><Link to="/certificates-management">Certificates Management</Link></li>
-          <li><Link to="/nic-verification">NIC Verification</Link></li>
-          <li><Link to="/driver-profile-management">Driver Profile Management</Link></li>
-          <li><Link to="/mechanic-profile-management">Mechanic Profile Management</Link></li>
-          {/* <li><Link to="/revenue">Revenue</Link></li> */}
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <Link
+                to={link.to}
+                className={location.pathname === link.to ? 'active' : ''}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
