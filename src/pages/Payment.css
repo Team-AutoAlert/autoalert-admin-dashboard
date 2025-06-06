@@ -1,0 +1,48 @@
+.payment-body {
+  flex-grow: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white; /* Default text color for this section */
+}
+
+.page-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: white; /* Title color */
+}
+
+.payment-table-container {
+  background-color: #666; /* Darker grey background for table container */
+  border-radius: 10px;
+  overflow: hidden; /* Ensure rounded corners clip table content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.payment-table-container table {
+  width: 100%;
+  border-collapse: collapse; /* Remove space between borders */
+}
+
+.payment-table-container th,
+.payment-table-container td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #777; /* Lighter border for rows */
+}
+
+.payment-table-container th {
+  background-color: #555; /* Slightly lighter grey for header */
+  font-weight: bold;
+  color: white;
+}
+
+.payment-table-container tbody tr:last-child td {
+  border-bottom: none; /* No border for the last row */
+}
+
+/* Style for the checkbox column */
+.payment-table-container td:nth-child(4) {
+  text-align: center; /* Center the checkbox */
+} 
