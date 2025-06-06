@@ -1,0 +1,63 @@
+.left-nav-bar {
+  width: 250px; /* Adjust width as needed */
+  background-color: #282c34; /* Dark background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-top-right-radius: 20px; /* Rounded corner */
+  border-bottom-right-radius: 20px; /* Rounded corner */
+  overflow: hidden;
+}
+
+.app-info {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+.app-logo {
+  width: 60px; /* Adjust size as needed */
+  height: 60px; /* Adjust size as needed */
+  margin-bottom: 10px;
+  /* Add styling for the actual logo image */
+}
+
+.app-title {
+  font-size: 1.5em;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+.app-subtitle {
+  font-size: 0.7em;
+  color: #ccc;
+}
+
+.nav-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin-bottom: 10px;
+}
+
+.nav-links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+  border-top-left-radius: 5px; /* Slight border radius for the links */
+  border-bottom-left-radius: 5px; /* Slight border radius for the links */
+}
+
+.nav-links a:hover {
+  background-color: #555; /* Darker background on hover */
+}
+
+.nav-links li:first-child a {
+  background-color: #555; /* Highlight the Dashboard link as per UI */
+} 
