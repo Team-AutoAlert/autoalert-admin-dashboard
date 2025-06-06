@@ -4,6 +4,7 @@ import './App.css';
 import Dashboard from './pages/Dashbord'; 
 import Payment from './pages/Payment'; 
 import CertificateManagement from './pages/CertificateManagement'; 
+import NicVerification from './pages/NicVerification';
 
 function App() {
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/certificates-management" element={<CertificateManagement />} />
+      <Route path="/nic-verification" element={<NicVerification />} />
     </Routes>
   );
 }
