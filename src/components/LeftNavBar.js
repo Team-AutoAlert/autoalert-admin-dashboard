@@ -14,7 +14,7 @@ function LeftNavBar() {
       <nav className="nav-links">
         <ul>
           <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/payment-management">Payment Management</Link></li>
+          <li><Link to="/payment">Payment Management</Link></li>
           <li><Link to="/certificates-management">Certificates Management</Link></li>
           <li><Link to="/nic-verification">NIC Verification</Link></li>
           <li><Link to="/driver-profile-management">Driver Profile Management</Link></li>
