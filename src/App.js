@@ -5,6 +5,8 @@ import Dashboard from './pages/Dashbord';
 import Payment from './pages/Payment'; 
 import CertificateManagement from './pages/CertificateManagement'; 
 import NicVerification from './pages/NicVerification';
+import DriverProfileManagement from './pages/DriverProfileManagement';
+import MechanicProfileManagement from './pages/MechanicProfileManagement';
 
 function App() {
   const navigate = useNavigate();
@@ -58,6 +60,8 @@ function App() {
       <Route path="/payment" element={<Payment />} />
       <Route path="/certificates-management" element={<CertificateManagement />} />
       <Route path="/nic-verification" element={<NicVerification />} />
+      <Route path="/driver-profile-management" element={<DriverProfileManagement />} />
+      <Route path="/mechanic-profile-management" element={<MechanicProfileManagement />} />
     </Routes>
   );
 }
