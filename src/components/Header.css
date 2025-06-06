@@ -1,0 +1,23 @@
+.dashboard-header {
+  background-color: #858585; /* Darker grey for the header */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end; /* Align admin info to the right */
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+}
+
+.admin-icon {
+  margin-right: 10px;
+  font-size: 1.2em; /* Adjust size as needed */
+}
+
+.admin-name {
+  font-size: 1em;
+} 
