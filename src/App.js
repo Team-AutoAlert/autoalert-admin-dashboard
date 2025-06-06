@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
-import Dashboard from './Dashbord'; // Import the Dashboard component
+import Dashboard from './pages/Dashbord'; // Import the Dashboard component
 
 function App() {
   const navigate = useNavigate();

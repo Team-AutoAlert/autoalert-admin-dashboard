@@ -1,7 +1,7 @@
 import React from 'react';
-import LeftNavBar from './components/LeftNavBar'; // Import LeftNavBar
-import Header from './components/Header'; // Import Header
-import Footer from './components/Footer'; // Import Footer
+import LeftNavBar from '../components/LeftNavBar'; // Import LeftNavBar
+import Header from '../components/Header'; // Import Header
+import Footer from '../components/Footer'; // Import Footer
 import './Dashboard.css'; // Assuming a CSS file for the dashboard
 
 function Dashboard() {
