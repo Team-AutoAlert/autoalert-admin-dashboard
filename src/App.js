@@ -1,8 +1,9 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
-import Dashboard from './pages/Dashbord'; // Import the Dashboard component
-import Payment from './pages/Payment'; // Import the Payment component
+import Dashboard from './pages/Dashbord'; 
+import Payment from './pages/Payment'; 
+import CertificateManagement from './pages/CertificateManagement'; 
 
 function App() {
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ function App() {
       } />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/payment" element={<Payment />} />
+      <Route path="/certificates-management" element={<CertificateManagement />} />
     </Routes>
   );
 }
