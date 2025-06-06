@@ -19,7 +19,7 @@ function LeftNavBar() {
           <li><Link to="/nic-verification">NIC Verification</Link></li>
           <li><Link to="/driver-profile-management">Driver Profile Management</Link></li>
           <li><Link to="/mechanic-profile-management">Mechanic Profile Management</Link></li>
-          <li><Link to="/revenue">Revenue</Link></li>
+          {/* <li><Link to="/revenue">Revenue</Link></li> */}
         </ul>
       </nav>
     </div>
