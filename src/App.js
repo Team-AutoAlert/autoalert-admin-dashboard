@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import Dashboard from './pages/Dashbord'; // Import the Dashboard component
+import Payment from './pages/Payment'; // Import the Payment component
 
 function App() {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ function App() {
         </div>
       } />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/payment" element={<Payment />} />
     </Routes>
   );
 }
