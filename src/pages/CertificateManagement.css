@@ -1,0 +1,68 @@
+.certificates-body {
+  flex-grow: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white; /* Default text color for this section */
+}
+
+.page-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: white; /* Title color */
+}
+
+.certificates-table-container {
+  background-color: #666; /* Darker grey background for table container */
+  border-radius: 10px;
+  overflow: hidden; /* Ensure rounded corners clip table content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.certificates-table-container table {
+  width: 100%;
+  border-collapse: collapse; /* Remove space between borders */
+}
+
+.certificates-table-container th,
+.certificates-table-container td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #777; /* Lighter border for rows */
+}
+
+.certificates-table-container th {
+  background-color: #555; /* Slightly lighter grey for header */
+  font-weight: bold;
+  color: white;
+}
+
+.certificates-table-container tbody tr:last-child td {
+  border-bottom: none; /* No border for the last row */
+}
+
+/* Style for the Certifications checkbox column */
+.certificates-table-container td:nth-child(4) {
+  text-align: center; /* Center the checkbox */
+}
+
+/* Style for the Edit button column */
+.certificates-table-container td:nth-child(6) {
+    text-align: center;
+}
+
+.edit-button {
+  background-color: #a8e6cf; /* Light green, matching feedback buttons */
+  color: #333; /* Dark text */
+  padding: 5px 15px; /* Adjusted padding */
+  border-radius: 5px; /* Rounded corners */
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em; /* Adjusted font size */
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #83d4b7; /* Slightly darker green on hover */
+} 
