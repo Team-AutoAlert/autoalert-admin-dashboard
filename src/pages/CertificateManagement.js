@@ -1,70 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import LeftNavBar from '../components/LeftNavBar';
 import Footer from '../components/Footer';
 import Pagination from '../components/Pagination';
-import './CertificateManagement.css'; // Assuming a CSS file for this page
+import UserService from '../services/UserService';
+import './CertificateManagement.css';
 
 function CertificateManagement() {
-  // Placeholder data
-  const certificatesData = [
-    { date: '16/10/2024', fullName: 'Kamal Perera', address: 'Nimal Silva', certifications: true, verify: 'Yes' },
-    { date: '16/10/2024', fullName: 'Kamal Perera', address: 'Nimal Silva', certifications: false, verify: 'No' },
-    { date: '16/10/2024', fullName: 'Kamal Perera', address: 'Nimal Silva', certifications: true, verify: 'Yes' },
-    { date: '16/10/2024', fullName: 'Kamal Perera', address: 'Nimal Silva', certifications: false, verify: 'No' },
-    { date: '16/10/2024', fullName: 'Kamal Perera', address: 'Nimal Silva', certifications: true, verify: 'Yes' },
-    { date: '16/10/2024', fullName: 'Kamal Perera', address: 'Nimal Silva', certifications: false, verify: 'No' },
-    // Add more data as needed
-  ];
-
+  const [mechanicsData, setMechanicsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5); // Set items per page, adjust as needed
+  const [itemsPerPage] = useState(5);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchMechanics = async () => {
+      try {
+        const response = await UserService.getAllUsers();
+        const mechanics = response.data.filter(user => user.role === 'mechanic');
+        setMechanicsData(mechanics);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch mechanics data');
+        setLoading(false);
+      }
+    };
+
+    fetchMechanics();
+  }, []);
 
   // Calculate the items to display on the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = certificatesData.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = mechanicsData.slice(indexOfFirstItem, indexOfLastItem);
 
   // Function to change page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
-    <div className="dashboard-container"> {/* Reusing the dashboard container style */}
+    <div className="dashboard-container">
       <LeftNavBar />
-      <div className="main-content"> {/* Reusing the main content style */}
+      <div className="main-content">
         <Header />
-        <div className="certificates-body"> {/* New class for this page's body */}
+        <div className="certificates-body">
           <h1 className="page-title">Check Certifications</h1>
-          <div className="certificates-table-container"> {/* New class for table container */}
+          <div className="certificates-table-container">
             <table>
               <thead>
                 <tr>
-                  <th>Date</th>
+                  <th>Registration Date</th>
                   <th>Full Name</th>
-                  <th>Address</th>
-                  <th>Certifications</th>
-                  <th>Verify</th>
-                  <th></th> {/* Column for Edit button */}
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {currentItems.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.date}</td>
-                    <td>{item.fullName}</td>
-                    <td>{item.address}</td>
-                    <td><input type="checkbox" checked={item.certifications} disabled /></td> {/* Checkbox for Certifications */}
-                    <td>{item.verify}</td>
-                    <td><button className="edit-button">Edit</button></td> {/* Edit button */}
+                {currentItems.map((mechanic) => (
+                  <tr key={mechanic._id}>
+                    <td>{new Date(mechanic.createdAt).toLocaleDateString()}</td>
+                    <td>{`${mechanic.firstName} ${mechanic.lastName}`}</td>
+                    <td>{mechanic.email}</td>
+                    <td>{mechanic.phoneNumber}</td>
+                    <td>{mechanic.status}</td>
+                    <td><button className="edit-button">Edit</button></td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <Pagination
-            totalItems={certificatesData.length}
+            totalItems={mechanicsData.length}
             itemsPerPage={itemsPerPage}
             currentPage={currentPage}
             onPageChange={handlePageChange}

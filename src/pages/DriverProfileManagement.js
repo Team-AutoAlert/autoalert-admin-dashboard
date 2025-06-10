@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import LeftNavBar from '../components/LeftNavBar';
 import Footer from '../components/Footer';
 import Pagination from '../components/Pagination';
+import UserService from '../services/UserService';
 import './DriverProfileManagement.css'; // Assuming a CSS file for this page
 
 function DriverProfileManagement() {
-  // Placeholder data
-  const driversData = [
-    { regDate: '16/10/2024', fullName: 'Kamal Perera', address: 'Address 1', transactions: 34 },
-    { regDate: '16/10/2024', fullName: 'Kamal Perera', address: 'Address 2', transactions: 23 },
-    { regDate: '16/10/2024', fullName: 'Kamal Perera', address: 'Address 3', transactions: 12 },
-    { regDate: '16/10/2024', fullName: 'Kamal Perera', address: 'Address 4', transactions: 23 },
-     { regDate: '16/10/2024', fullName: 'Kamal Perera', address: 'Address 1', transactions: 30 },
-    { regDate: '16/10/2024', fullName: 'Kamal Perera', address: 'Address 2', transactions: 25 },
-    { regDate: '16/10/2024', fullName: 'Kamal Perera', address: 'Address 3', transactions: 15 },
-    { regDate: '16/10/2024', fullName: 'Kamal Perera', address: 'Address 4', transactions: 20 },
-    // Add more data as needed
-  ];
-
+  const [driversData, setDriversData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5); // Set items per page, adjust as needed
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchDrivers = async () => {
+      try {
+        const drivers = await UserService.getDrivers();
+        setDriversData(drivers);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch drivers data');
+        setLoading(false);
+      }
+    };
+
+    fetchDrivers();
+  }, []);
 
   // Calculate the items to display on the current page
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -31,6 +37,9 @@ function DriverProfileManagement() {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="dashboard-container"> {/* Reusing the dashboard container style */}
@@ -43,20 +52,22 @@ function DriverProfileManagement() {
             <table>
               <thead>
                 <tr>
-                  <th>Reg Date</th>
+                  <th>Registration Date</th>
                   <th>Full Name</th>
-                  <th>Address</th>
-                  <th>Number of Transactions</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Status</th>
                   <th>Action</th> {/* Column for Edit button */}
                 </tr>
               </thead>
               <tbody>
-                {currentItems.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.regDate}</td>
-                    <td>{item.fullName}</td>
-                    <td>{item.address}</td>
-                    <td>{item.transactions}</td>
+                {currentItems.map((driver) => (
+                  <tr key={driver._id}>
+                    <td>{new Date(driver.createdAt).toLocaleDateString()}</td>
+                    <td>{`${driver.firstName} ${driver.lastName}`}</td>
+                    <td>{driver.email}</td>
+                    <td>{driver.phoneNumber}</td>
+                    <td>{driver.status}</td>
                     <td><button className="edit-button">Edit</button></td> {/* Edit button, reusing the style */}
                   </tr>
                 ))}
